@@ -18,9 +18,29 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Variabel untuk menyimpan status pembayaran dan kode voucher
+// Variabel untuk menyimpan status pembayaran dan kredensial
 $payment_success = false;
-$generated_voucher_code = null;
+$generated_username = null;
+$generated_password = null;
+
+// Fungsi untuk menghasilkan username
+function generateUsername() {
+    $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $username = '';
+    for ($i = 0; $i < 5; $i++) {
+        $username .= $chars[rand(0, strlen($chars) - 1)];
+    }
+    return $username;
+}
+
+// Fungsi untuk menghasilkan password
+function generatePassword() {
+    $password = '';
+    for ($i = 0; $i < 3; $i++) {
+        $password .= rand(0, 9);
+    }
+    return $password;
+}
 
 // Cek jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,12 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validasi data
     if (!empty($email) && !empty($whatsapp) && !empty($payment_method)) {
-        // Generate kode voucher unik
-        $generated_voucher_code = strtoupper(uniqid("VCH-")); // Contoh: VCH-63F2A1C3ABCD
+        // Generate username dan password unik
+        $generated_username = generateUsername();
+        $generated_password = generatePassword();
 
         // Simpan ke database
-        $stmt = $conn->prepare("INSERT INTO pembelian_voucher (voucher_name, voucher_price, email, whatsapp_number, payment_method, voucher_code) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sdssss", $voucher_name, $voucher_price, $email, $whatsapp, $payment_method, $generated_voucher_code);
+        $stmt = $conn->prepare("INSERT INTO pembelian (voucher_name, voucher_price, email, whatsapp_number, payment_method, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sdsssss", $voucher_name, $voucher_price, $email, $whatsapp, $payment_method, $generated_username, $generated_password);
 
         if ($stmt->execute()) {
             // Tandai pembayaran berhasil
@@ -97,13 +118,14 @@ $conn->close();
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-body">
-                    <?php if ($payment_success && $generated_voucher_code): ?>
+                    <?php if ($payment_success && $generated_username && $generated_password): ?>
                         <div class="success-message">
                             Pembayaran Berhasil!
                         </div>
                         <hr>
-                        <p class="text-center">Kode voucher Anda:</p>
-                        <p class="voucher-code"><?php echo $generated_voucher_code; ?></p>
+                        <p class="text-center">Kredensial Anda:</p>
+                        <p class="voucher-code">Username: <?php echo $generated_username; ?></p>
+                        <p class="voucher-code">Password: <?php echo $generated_password; ?></p>
                         <hr>
                         <div class="text-center">
                             <a href="home.php" class="btn btn-primary">Kembali ke Beranda</a>

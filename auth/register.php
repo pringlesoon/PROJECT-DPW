@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $query = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
         if ($conn->query($query)) {
-            header("Location: login.php"); // Pastikan jalur ke login.php benar
+            header("Location: authlogin.php"); // Pastikan jalur ke login.php benar
             exit;
         } else {
             echo "Registrasi gagal: " . $conn->error;
