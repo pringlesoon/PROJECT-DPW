@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login</title>
 </head>
 <style>
-<<<<<<< HEAD
     .navbar {
         background-color: #d32f2f;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -93,26 +92,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     color: #d32f2f !important;
     background-color: #fff;
     border: 2px solid #fff;
-=======
-    body {
-        background-color: #f5f5f5;
-    }
-    .navbar {
-        background-color: #d32f2f;
-    }
-    .navbar-brand, .nav-link {
-        color: #fff !important;
-    }
-    .login-btn {
-        color: #d32f2f !important;
-        background-color: #fff;
-        border: 2px solid #fff;
->>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
     }
     .login-btn:hover {
         color: #fff !important;
         background-color: #d32f2f;
         border: 2px solid #fff;
+    }
+    .login-card button {
+        background-color: #d32f2f;
+        border: none;
+    }
+    .login-card button:hover {
+        background-color: #a82323;
+    }
+    footer {
+        background-color: #d32f2f;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 50px;
+    }
+    footer a {
+        color: #fff;
+        text-decoration: underline;
+    }
+    footer a:hover {
+        color: #000;
+        text-decoration: none;
     }
 </style>
 
@@ -139,12 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </nav>
-    <div class="text-white text-center mb-8">
-        <h1 class="text-4xl font-bold">Selamat datang di portal</h1>
-        <h2 class="text-3xl font-semibold">WIFI.an</h2>
-    </div>
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card shadow-lg" style="width: 25rem;">
+        <div class="card shadow-lg login-card" style="width: 25rem;">
             <div class="card-body">
                 <h1 class="card-title text-center mb-4">Login</h1>
                 <?php if (isset($_SESSION['error'])): ?>
@@ -159,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="password" class="form-label">Password</label>
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <button type="submit" class="btn btn-danger w-100">Login</button>
                 </form>
                 <div class="mt-3 text-center">
                     <p>Belum punya akun? <a href="register.php" class="text-primary">Daftar di sini</a></p>
@@ -167,6 +169,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 WiFi.an | Contact us at <a href="mailto:support@wifian.com">support@wifian.com</a> | Call: +62-123-456-7890</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

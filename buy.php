@@ -7,7 +7,6 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-<<<<<<< HEAD
 // Koneksi ke database
 $host = 'localhost'; // Sesuaikan dengan konfigurasi Anda
 $username = 'root'; // Sesuaikan dengan username database Anda
@@ -73,8 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-=======
->>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
 ?>
 
 <!DOCTYPE html>
@@ -95,33 +92,6 @@ $conn->close();
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-<<<<<<< HEAD
-=======
-        .voucher-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .voucher-item {
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, background-color 0.3s;
-            cursor: pointer;
-        }
-        .voucher-item:hover {
-            transform: scale(1.05);
-            background-color: #f1f1f1;
-        }
-        .voucher-item.selected {
-            background-color: #007bff;
-            color: white;
-        }
->>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
     </style>
 </head>
 <body>
@@ -130,11 +100,7 @@ $conn->close();
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-body">
-<<<<<<< HEAD
                 <?php if ($success): ?>
-=======
-                <?php if (isset($success) && $success): ?>
->>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
                         <div class="alert alert-success">Pembayaran berhasil!</div>
                         <p>Username: <strong><?php echo $generated_username; ?></strong></p>
                         <p>Password: <strong><?php echo $generated_password; ?></strong></p>
@@ -142,11 +108,7 @@ $conn->close();
                     <?php else: ?>
                         <h5 class="card-title">Pembelian Voucher</h5>
                         <form method="POST">
-<<<<<<< HEAD
                             <?php if (!empty($error)): ?>
-=======
-                            <?php if (isset($error)): ?>
->>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
                                 <div class="alert alert-danger"><?php echo $error; ?></div>
                             <?php endif; ?>
 

@@ -28,11 +28,7 @@
             padding: 0.5rem 1rem;
         }
         .nav-link:hover {
-<<<<<<< HEAD
             color:rgb(0, 0, 0) !important;
-=======
-            color: #ffc107 !important;
->>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
         }
         .navbar-toggler {
             border: none;
