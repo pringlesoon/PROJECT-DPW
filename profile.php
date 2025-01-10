@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Periksa apakah pengguna sudah login
+// // // Periksa apakah pengguna sudah login
 if (!isset($_SESSION['user'])) {
     header("Location: auth/login.php");
     exit;
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_account'])) {
         $error = "Gagal menghapus akun. Silakan coba lagi.";
     }
 }
-?>
+// ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
