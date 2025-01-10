@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login</title>
 </head>
 <style>
+<<<<<<< HEAD
     .navbar {
         background-color: #d32f2f;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -92,6 +93,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     color: #d32f2f !important;
     background-color: #fff;
     border: 2px solid #fff;
+=======
+    body {
+        background-color: #f5f5f5;
+    }
+    .navbar {
+        background-color: #d32f2f;
+    }
+    .navbar-brand, .nav-link {
+        color: #fff !important;
+    }
+    .login-btn {
+        color: #d32f2f !important;
+        background-color: #fff;
+        border: 2px solid #fff;
+>>>>>>> 8900afbd296141882bf1b95773dfaac9712c47cc
     }
     .login-btn:hover {
         color: #fff !important;
