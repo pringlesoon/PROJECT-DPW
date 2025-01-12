@@ -42,6 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $payment_success = true;
         $payment_stage = "success";
 
+        // Update status pembayaran menjadi completed
+        $stmt = $conn->prepare("UPDATE pembelian SET status = 'completed' WHERE id = ?");
+        $stmt->bind_param("i", $_SESSION['payment_id']);
+        $stmt->execute();
+        $stmt->close();
+
         // Generate username dan password
         $generated_username = substr(md5(uniqid()), 0, 5);
         $generated_password = substr(md5(uniqid()), 0, 3);
@@ -92,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!empty($email) && !empty($whatsapp) && !empty($payment_method)) {
             // Simpan ke database
-            $stmt = $conn->prepare("INSERT INTO pembelian (voucher_name, voucher_price, email, whatsapp_number, payment_method) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO pembelian (voucher_name, voucher_price, email, whatsapp_number, payment_method, status) VALUES (?, ?, ?, ?, ?, 'pending')");
             $stmt->bind_param(
                 "sdsss",
                 $voucher_name,
@@ -149,6 +155,7 @@ if ($payment_stage === "confirmation" && isset($_SESSION['payment'])) {
 
 $conn->close();
 ?>
+
 
 
 <!DOCTYPE html>

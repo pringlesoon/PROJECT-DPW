@@ -7,7 +7,8 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-// Koneksi ke database
+// Koneksi ke
+$host = 
 $host = 'localhost'; // Sesuaikan dengan konfigurasi Anda
 $username = 'root'; // Sesuaikan dengan username database Anda
 $password = ''; // Sesuaikan dengan password database Anda
