@@ -155,6 +155,7 @@ if (isset($_SESSION['username'])) {
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                        <li><a class="dropdown-item" href="my_voucher.php">My Voucher</a></li>
                         <li><a class="dropdown-item" href="logout.php">Log Out</a></li>
                     </ul>
                 </li>
